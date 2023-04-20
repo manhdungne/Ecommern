@@ -1,0 +1,34 @@
+.signup__image--container {
+    background-image: url('https://toigingiuvedep.vn/wp-content/uploads/2021/04/hinh-nen-mau-trang-doc-dao-cho-dien-thoai.jpg');
+    height: 90vh;
+    background-size: cover;
+}
+
+.signup__form--container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh;
+    justify-content: center;
+}
+
+.login__image--container {
+    background-image: url('https://toigingiuvedep.vn/wp-content/uploads/2021/04/hinh-nen-mau-trang-doc-dao-cho-dien-thoai.jpg');
+    height: 90vh;
+    background-size: cover;
+}
+
+.login__form--container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh;
+    justify-content: center;
+}
+
+@media screen and (max-width: 756px) {
+    .login__image--container,
+    .signup__image--container {
+        display: none;
+    }
+}
