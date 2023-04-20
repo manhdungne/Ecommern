@@ -13,7 +13,7 @@ function CheckoutForm() {
   const [alertMessage, setAlertMessage] = useState("");
   const [createOrders, { isLoading, isError, isSuccess }] = useCreateOrderMutation();
   const [country, setCountry] = useState("");
-  const [address, setAddress] = useState("");
+  const [location, setLocation] = useState("");
   const [paying, setPaying] = useState(false)
 
 
@@ -22,7 +22,7 @@ function CheckoutForm() {
     if (!stripe || !elements || user.cart.count <= 0) return;
     setPaying(true);
     const { client_secret } = await fetch(
-      "http://localhost:8080/create-payment",
+      "https://nhom13.onrender.com/create-payment",
       {
         method: "POST",
         headers: {
@@ -43,7 +43,7 @@ function CheckoutForm() {
       createOrders({
         userId: user._id,
         cart: user.cart,
-        address,
+        location,
         country,
       }).then((res) => {
         if (!isLoading && !isError) {
@@ -91,8 +91,8 @@ function CheckoutForm() {
               <Form.Control
                 type="text"
                 placeholder="Address"
-                value={address}
-                onChange={(e) => setAddress(e.target.value)}
+                value={user.location}
+                onChange={(e) => setLocation(e.target.value)}
                 required
               />
             </Form.Group>

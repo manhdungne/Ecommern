@@ -6,10 +6,17 @@ const Comment = require("../models/Comment");
 
 // Sign Up
 router.post("/signup", async (req, res) => {
-  const { name, email, password } = req.body;
+  const { name, email, password, age, mobile, location } = req.body;
 
   try {
-    const user = await User.create({ name, email, password });
+    const user = await User.create({
+      name,
+      email,
+      password,
+      age,
+      mobile,
+      location,
+    });
     res.json(user);
   } catch (error) {
     if (error.code === 11000)
@@ -64,7 +71,12 @@ router.put("/editUser/:id", async (req, res) => {
   try {
     const user = await User.findByIdAndUpdate(
       id,
-      { name: req?.body?.name, password: req?.body?.password },
+      {
+        name: req?.body?.name,
+        age: req?.body?.age,
+        location: req?.body?.location,
+        mobile: req?.body?.mobile,
+      },
       { new: true }
     );
     res.status(200).json(user);
@@ -73,5 +85,18 @@ router.put("/editUser/:id", async (req, res) => {
   }
 });
 
+router.put("/change-password/:id", async (req, res) => {
+  const { id } = req.params;
+  const {password} = req.body
+  try {
+      const user = await User.findById(id);
+      user.password = password;
+      user.save()
+    res.status(200).json(user);
+
+  } catch (error) {
+    res.status(400).send(error.message);
+  }
+});
 
 module.exports = router;

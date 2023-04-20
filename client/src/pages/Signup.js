@@ -8,10 +8,14 @@ function Signup() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [name, setName] = useState("");
+  const [age, setAge] = useState("");
+  const [location, setLocation] = useState("");
+  const [mobile, setMobile] = useState("");
+
   const [signup, { error, isLoading, isError }] = useSignupMutation();
   function handleSignup(e) {
     e.preventDefault()
-    signup({name, email, password})
+    signup({name, email, password, age, location, mobile})
   }
   return (
     <Container>
@@ -50,6 +54,38 @@ function Signup() {
                 value={password}
                 required
                 onChange={(e) => setPassword(e.target.value)}
+              />
+            </Form.Group>
+
+            <Form.Group className="mb-3">
+              <Form.Label>Age</Form.Label>
+              <Form.Control
+                type="text"
+                placeholder="Age"
+                value={age}
+                required
+                onChange={(e) => setAge(e.target.value)}
+              />
+            </Form.Group>
+
+            <Form.Group className="mb-3">
+              <Form.Label>mobile</Form.Label>
+              <Form.Control
+                type="text"
+                placeholder="Enter mobile"
+                value={mobile}
+                required
+                onChange={(e) => setMobile(e.target.value)}
+              />
+            </Form.Group>
+
+            <Form.Group className="mb-3">
+              <Form.Label>Location</Form.Label>
+              <Form.Control
+                type="text"
+                placeholder="Enter location"
+                value={location}
+                onChange={(e) => setLocation(e.target.value)}
               />
             </Form.Group>
 

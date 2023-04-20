@@ -8,6 +8,15 @@ var userSchema = new mongoose.Schema(
       type: String,
       required: [true, "is required"],
     },
+    age: {
+      type: String,
+    },
+    location: {
+      type: String,
+    },
+    mobile: {
+      type: String,
+    },
     email: {
       type: String,
       required: [true, "is required"],

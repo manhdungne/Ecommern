@@ -94,6 +94,14 @@ export const appApi = createApi({
       }),
     }),
 
+    updatePassword: builder.mutation({
+      query: (user) => ({
+        url: `/users/change-password/${user.id}`,
+        method: "PUT",
+        body: user,
+      }),
+    }),
+
     createComment: builder.mutation({
       query: ({ product_id, user_id, comment }) => ({
         url: `/products/comment/${product_id}`,
@@ -119,7 +127,8 @@ export const {
   useDeleteProductMutation,
   useUpdateProductMutation,
   useUpdateUserMutation,
-  useCreateCommentMutation
+  useCreateCommentMutation,
+  useUpdatePasswordMutation
 } = appApi;
 
 export default appApi;

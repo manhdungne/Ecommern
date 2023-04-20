@@ -51,6 +51,10 @@ export const userSlice = createSlice({
       appApi.endpoints.updateUser.matchFulfilled,
       (_, { payload }) => payload
     );
+    builder.addMatcher(
+      appApi.endpoints.updatePassword.matchFulfilled,
+      (_, { payload }) => payload
+    );
     
   },
 });
